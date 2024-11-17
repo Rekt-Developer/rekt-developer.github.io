@@ -35,6 +35,13 @@ article_html_template = """
     <meta property="og:description" content="{{ description }}">
     <meta property="og:image" content="{{ image_url }}">
     <meta property="og:url" content="{{ url }}">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Crypto News">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ title }}">
+    <meta name="twitter:description" content="{{ description }}">
+    <meta name="twitter:image" content="{{ image_url }}">
+    <meta name="twitter:url" content="{{ url }}">
     <title>{{ title }} - Crypto News</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -53,6 +60,12 @@ article_html_template = """
             </div>
         </div>
     </nav>
+
+    <!-- Ad Banner -->
+    <div class="bg-gray-800 text-white text-center py-4">
+        <p class="font-semibold">Advertise with us!</p>
+        <p>Contact us for ad placement on our website.</p>
+    </div>
 
     <!-- Article Content -->
     <main class="max-w-4xl mx-auto px-4 py-8">
@@ -135,6 +148,13 @@ index_html_template = """
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Crypto News Site - Latest News in Crypto">
     <meta name="keywords" content="crypto, bitcoin, ethereum, news, market">
+    <meta name="author" content="Crypto News">
+    <meta property="og:title" content="Crypto News - Latest Articles">
+    <meta property="og:description" content="Stay informed with the latest updates from the crypto world">
+    <meta property="og:image" content="https://www.example.com/images/logo.png">
+    <meta property="og:url" content="https://www.example.com">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
     <title>Crypto News - Latest Articles</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -154,56 +174,33 @@ index_html_template = """
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <div class="bg-blue-700 text-white py-16">
-        <div class="max-w-7xl mx-auto px-4">
-            <h1 class="text-4xl font-bold mb-4">Latest Cryptocurrency News</h1>
-            <p class="text-xl text-blue-100">Stay informed with the latest updates from the crypto world</p>
-        </div>
+    <!-- Ad Banner -->
+    <div class="bg-gray-800 text-white text-center py-4">
+        <p class="font-semibold">Advertise with us!</p>
+        <p>Contact us for ad placement on our website.</p>
     </div>
 
-    <!-- Featured Articles -->
-    <div class="max-w-7xl mx-auto px-4 py-12">
-        <h2 class="text-3xl font-bold mb-8">Featured Stories</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <!-- Latest Articles Section -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold text-gray-900 mb-6">Latest Articles</h1>
+        <div class="grid grid-cols-3 gap-6">
             {% for article in articles %}
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
-                <img src="{{ article.image_url }}" alt="Article Image" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h3 class="text-xl font-bold mb-2 text-gray-900">{{ article.title }}</h3>
-                    <p class="text-gray-600 mb-4">{{ article.body[:150] }}...</p>
-                    <div class="flex justify-between items-center">
-                        <a href="news_pages/{{ article.id }}.html" class="text-blue-600 hover:text-blue-800 font-semibold">
-                            Read More <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
-                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>{{ article.published_on }}</span>
-                    </div>
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <img src="{{ article.image_url }}" alt="Article Image" class="w-full h-56 object-cover">
+                <div class="p-4">
+                    <h2 class="text-xl font-semibold text-gray-800">{{ article.title }}</h2>
+                    <p class="text-gray-600 mt-2">{{ article.description }}</p>
+                    <a href="{{ article.url }}" class="text-blue-600 mt-4 inline-block">Read More &raquo;</a>
                 </div>
             </div>
             {% endfor %}
         </div>
-    </div>
-
-    <!-- Newsletter Section -->
-    <div class="bg-gray-100 py-12">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="bg-white rounded-lg shadow-lg p-8 flex flex-col items-center">
-                <h2 class="text-2xl font-bold mb-4">Subscribe to Our Newsletter</h2>
-                <p class="text-gray-600 mb-6">Get the latest crypto news delivered straight to your inbox</p>
-                <form class="w-full max-w-md flex gap-4">
-                    <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <button type="submit" class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-                        Subscribe
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
+    </main>
 
     <!-- Footer -->
     <footer class="bg-gray-800 text-white mt-12">
         <div class="max-w-7xl mx-auto px-4 py-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-3 gap-8">
                 <div>
                     <h3 class="text-lg font-bold mb-4">About Us</h3>
                     <p class="text-gray-400">Your trusted source for cryptocurrency news and analysis.</p>
@@ -231,61 +228,45 @@ index_html_template = """
 </html>
 """
 
-def format_date(timestamp):
-    """Format Unix timestamp to readable date"""
-    return datetime.fromtimestamp(timestamp).strftime('%B %d, %Y')
+def fetch_news():
+    response = requests.get(URL, params=params)
+    if response.status_code == 200:
+        return response.json()['data']['feeds']
+    else:
+        print(f"Failed to retrieve data. Status code: {response.status_code}")
+        return []
 
-# Fetch and process data
-response = requests.get(URL, params=params)
-news_data = response.json()
-articles = news_data.get('Data', [])
-
-# Generate pages
-all_articles = []
-
-for article in articles:
-    article_id = article['id']
-    title = article['title']
-    url = article['url']
-    body = article['body']
-    published_on = format_date(article['published_on'])
-    image_url = article.get('imageurl', '')
-    description = body[:150]
-    tags = article.get('tags', '').replace('|', ', ')
-    author = article.get('author', 'Crypto News')
-
-    # Render article page
-    article_template = Template(article_html_template)
-    article_html_content = article_template.render(
-        title=title,
-        url=url,
-        body=body,
-        published_on=published_on,
-        image_url=image_url,
-        description=description,
-        tags=tags,
-        keywords=tags,
-        author=author
+def generate_article_html(article):
+    template = Template(article_html_template)
+    return template.render(
+        title=article['title'],
+        description=article['description'],
+        image_url=article['imageurl'],
+        body=article['body'],
+        url=article['url'],
+        author=article['source'],
+        published_on=datetime.fromtimestamp(article['published_on']).strftime('%B %d, %Y'),
+        tags=article.get('tags', ''),
     )
 
-    # Save article file
-    article_file_path = os.path.join(output_dir, f"{article_id}.html")
-    with open(article_file_path, 'w', encoding='utf-8') as file:
-        file.write(article_html_content)
+def generate_index_html(articles):
+    template = Template(index_html_template)
+    return template.render(articles=articles)
 
-    all_articles.append({
-        'id': article_id,
-        'title': title,
-        'body': body,
-        'image_url': image_url,
-        'published_on': published_on
-    })
+# Main Execution
+if __name__ == "__main__":
+    news_articles = fetch_news()
 
-# Generate index page
-index_template = Template(index_html_template)
-index_html_content = index_template.render(articles=all_articles)
+    # Generate Article Pages
+    for article in news_articles:
+        article_html = generate_article_html(article)
+        article_filename = f"{article['guid'].split('/')[-1]}.html"
+        with open(os.path.join(output_dir, article_filename), 'w', encoding='utf-8') as f:
+            f.write(article_html)
+    
+    # Generate Index Page
+    index_html = generate_index_html(news_articles)
+    with open(os.path.join(output_dir, 'index.html'), 'w', encoding='utf-8') as f:
+        f.write(index_html)
 
-with open('index.html', 'w', encoding='utf-8') as index_file:
-    index_file.write(index_html_content)
-
-print("Enhanced HTML files generated successfully!")
+    print(f"{len(news_articles)} articles and index page generated.")
