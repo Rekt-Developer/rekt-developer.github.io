@@ -1,104 +1,396 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rekt Developer Profile</title>
-    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-    <script src="https://unpkg.com/babel-standalone@7.18.10/babel.min.js"></script>
-    <script src="https://unpkg.com/react-icons@4.6.0/dist/react-icons.min.js"></script> <!-- React Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@700&display=swap" rel="stylesheet" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rekt Developer | Smart Contract Developer & Security Researcher</title>
+    <meta name="description" content="Smart Contract Developer specializing in DeFi, Web3 Security, and dApp development">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-      body {
-        font-family: "IBM Plex Mono", monospace;
-        background-color: #000;
-        color: #fff;
-        text-align: center;
-      }
-      /* Your existing styles... */
+        :root {
+            --primary-red: #ff0000;
+            --dark-red: #990000;
+            --darker-bg: #0a0a0a;
+            --dark-bg: #121212;
+            --card-bg: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3b3;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'IBM Plex Mono', monospace;
+        }
+
+        body {
+            background-color: var(--darker-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Header Styles */
+        .header {
+            background: linear-gradient(135deg, var(--dark-red), var(--primary-red));
+            background-size: 200% 200%;
+            animation: gradientFlow 15s ease infinite;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            animation: fadeIn 1s ease;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            animation: fadeIn 1s ease 0.2s backwards;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        /* Profile Section */
+        .profile {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeIn 1s ease 0.4s backwards;
+        }
+
+        .profile-pic {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 4px solid var(--primary-red);
+            margin: 1rem auto;
+            display: block;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.05);
+            animation: pulse 2s infinite;
+        }
+
+        /* Card Styles */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 0, 0, 0.1);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            animation: fadeIn 1s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-red);
+        }
+
+        .card h2 {
+            color: var(--primary-red);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        /* Tech Stack */
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+
+        .tech-badge {
+            background-color: var(--dark-red);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .tech-badge:hover {
+            transform: scale(1.1);
+            background-color: var(--primary-red);
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .project-card {
+            background-color: rgba(255, 0, 0, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: rgba(255, 0, 0, 0.1);
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: scale(1.05);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            color: var(--primary-red);
+            font-weight: bold;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--primary-red);
+            transform: translateY(-3px);
+        }
+
+        /* Activity Graph */
+        .activity-graph {
+            width: 100%;
+            height: 100px;
+            display: flex;
+            align-items: flex-end;
+            gap: 3px;
+            margin-top: 1.5rem;
+        }
+
+        .activity-bar {
+            flex: 1;
+            background-color: var(--primary-red);
+            transition: height 0.3s ease;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, var(--dark-red), var(--primary-red));
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .profile-pic {
+                width: 150px;
+                height: 150px;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
-  </head>
+</head>
+<body>
+    <div class="header">
+        <h1>Rekt Developer</h1>
+        <p>Your Insights, My Winning! 💡</p>
+    </div>
 
-  <body>
-    <div id="root"></div>
+    <div class="container">
+        <div class="profile">
+            <img src="/api/placeholder/200/200" alt="Rekt Developer" class="profile-pic">
+            <h2>Smart Contract Developer & Security Researcher</h2>
+            <p>🌐 Based in the Blockchain Space</p>
+        </div>
 
-    <script type="text/babel">
-      const { FaGithub, FaTelegram, FaShieldAlt } = ReactIcons;
-      const { useState, useEffect } = React;
-
-      // TechBadge, ProjectCard, StatisticCard, and other components...
-
-      const AdvancedProfile = () => {
-        const [showMore, setShowMore] = useState(false);
-        const [currentTime, setCurrentTime] = useState("");
-
-        useEffect(() => {
-          const timer = setInterval(() => {
-            setCurrentTime(new Date().toLocaleTimeString());
-          }, 1000);
-          return () => clearInterval(timer);
-        }, []);
-
-        return (
-          <div className="min-h-screen bg-black text-white font-mono">
-            {/* Header */}
-            <div className="bg-gradient-to-r from-red-900 to-red-600 p-6">
-              <div className="max-w-4xl mx-auto text-center">
-                <h1 className="text-4xl font-bold mb-2">Rekt Developer</h1>
-                <p className="text-xl opacity-90">Your Insights, My Winning!💡</p>
-                <div className="text-sm opacity-75 mt-2">{currentTime}</div>
-              </div>
+        <div class="card">
+            <h2>About Me</h2>
+            <p>Specialized in DeFi protocol development and smart contract security. Passionate about building secure and efficient blockchain solutions.</p>
+            <div class="tech-stack">
+                <span class="tech-badge">Solidity</span>
+                <span class="tech-badge">TypeScript</span>
+                <span class="tech-badge">Python</span>
+                <span class="tech-badge">Rust</span>
+                <span class="tech-badge">Node.js</span>
+                <span class="tech-badge">React</span>
+                <span class="tech-badge">Web3.js</span>
+                <span class="tech-badge">Ethereum</span>
             </div>
+        </div>
 
-            {/* Profile Section */}
-            <div className="flex flex-col md:flex-row items-center gap-8 mb-12">
-              <div className="relative">
-                <img
-                  src="https://your-image-url.com/profile-pic.jpg"  <!-- Use actual image URL -->
-                  alt="Profile"
-                  className="w-36 h-36 rounded-full border-4 border-red-600"
-                />
-                <div className="absolute -bottom-2 -right-2 bg-red-600 p-2 rounded-full">
-                  <FaShieldAlt className="w-4 h-4" />
+        <div class="card">
+            <h2>Current Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Smart Contract Auditing</h3>
+                    <p>Conducting comprehensive security audits of DeFi protocols</p>
                 </div>
-              </div>
-
-              <div className="flex-1 text-center md:text-left">
-                <h2 className="text-2xl font-bold mb-4">About Me</h2>
-                <p className="text-gray-400">I am a blockchain developer...</p>
-              </div>
+                <div class="project-card">
+                    <h3>DeFi Protocol Development</h3>
+                    <p>Building next-gen lending and borrowing platforms</p>
+                </div>
+                <div class="project-card">
+                    <h3>Security Tools</h3>
+                    <p>Developing automated vulnerability scanners</p>
+                </div>
             </div>
+        </div>
 
-            {/* Social Links */}
-            <div className="flex justify-center gap-4 mt-8">
-              <a
-                href="https://github.com/Rekt-Developer"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-red-600 transition-colors duration-300"
-              >
-                <FaGithub className="w-6 h-6" />
-              </a>
-              <a
-                href="https://t.me/RektDevelopers"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-red-600 transition-colors duration-300"
-              >
-                <FaTelegram className="w-6 h-6" />
-              </a>
+        <div class="card">
+            <h2>Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <p>Contracts Audited</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">200+</div>
+                    <p>Vulnerabilities Found</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">30+</div>
+                    <p>Projects Completed</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1.2k+</div>
+                    <p>GitHub Commits</p>
+                </div>
             </div>
+        </div>
 
-            {/* Footer */}
-            <div className="bg-gradient-to-r from-red-900 to-red-600 p-4 mt-12">
-              <p className="text-center">Made with ❤️ by Rekt Developer</p>
+        <div class="card">
+            <h2>Activity</h2>
+            <div class="activity-graph">
+                <div class="activity-bar" style="height: 60%;"></div>
+                <div class="activity-bar" style="height: 80%;"></div>
+                <div class="activity-bar" style="height: 40%;"></div>
+                <div class="activity-bar" style="height: 90%;"></div>
+                <div class="activity-bar" style="height: 70%;"></div>
+                <div class="activity-bar" style="height: 50%;"></div>
+                <div class="activity-bar" style="height: 85%;"></div>
+                <div class="activity-bar" style="height: 65%;"></div>
+                <div class="activity-bar" style="height: 75%;"></div>
+                <div class="activity-bar" style="height: 55%;"></div>
+                <div class="activity-bar" style="height: 95%;"></div>
+                <div class="activity-bar" style="height: 45%;"></div>
             </div>
-          </div>
-        );
-      };
+        </div>
 
-      ReactDOM.render(<AdvancedProfile />, document.getElementById("root"));
+        <div class="social-links">
+            <a href="https://github.com/Rekt-Developer" class="social-link" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://t.me/RektDevelopers" class="social-link" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-telegram"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Made with ❤️ by Rekt Developer</p>
+    </div>
+
+    <script>
+        // Add interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate activity bars on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.height = entry.target.dataset.height;
+                    }
+                });
+            });
+
+            document.querySelectorAll('.activity-bar').forEach(bar => {
+                const height = bar.style.height;
+                bar.style.height = '0%';
+                bar.dataset.height = height;
+                observer.observe(bar);
+            });
+
+            // Add hover effect to project cards
+            document.querySelectorAll('.project-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px)';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
     </script>
-  </body>
+</body>
 </html>
