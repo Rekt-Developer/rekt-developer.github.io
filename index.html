@@ -1,25 +1,32 @@
 <!DOCTYPE html>
-<html lang="bn"> <!-- Change language to Bangla -->
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RektDeveloper - Crypto Insights, Market Analysis, and Development Trends">
+    <meta name="keywords" content="crypto, development, market analysis, TypeScript">
+    <meta name="author" content="RektDeveloper">
+
     <title>RektDeveloper - Your Insights, My Winning!</title>
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Advanced market analysis, coding patterns, and technical insights">
-    <meta name="keywords" content="crypto, development, TypeScript, market analysis">
-    
-    <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="RektDeveloper">
     <meta property="og:description" content="Your Insights, My Winning!">
     <meta property="og:image" content="https://rekt-developer.github.io/assets/og-image.jpg">
-    
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Siyam+Rupali&display=swap" rel="stylesheet"> <!-- Bangla font Siyam Rupali -->
 
-    <!-- Font Awesome (for icons) -->
+    <!-- Google Fonts (Including Bangla Font) -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Siyam+Rupali&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://rekt-developer.github.io/assets/favicon.ico" type="image/x-icon">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
 
     <style>
         :root {
@@ -33,362 +40,167 @@
             --background: #ffffff;
             --card-bg: #f8fafc;
             --border: #e5e7eb;
-
-            --space-xs: 0.5rem;
-            --space-sm: 1rem;
-            --space-md: 1.5rem;
-            --space-lg: 2rem;
-            --space-xl: 3rem;
-
-            --radius-sm: 0.375rem;
-            --radius-md: 0.5rem;
-            --radius-lg: 1rem;
-
-            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
         }
 
         body {
             font-family: 'Inter', sans-serif;
+            background-color: var(--background);
             color: var(--text);
-            line-height: 1.5;
-            background: var(--background);
+            margin: 0;
+            padding: 0;
         }
 
-        code, pre {
-            font-family: 'JetBrains Mono', monospace;
+        h1, h2, h3 {
+            font-family: 'Siyam Rupali', sans-serif;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 var(--space-md);
+        .hero {
+            background: linear-gradient(to bottom right, var(--primary), var(--secondary));
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
         }
 
-        /* Header Styles */
         .header {
-            background: var(--background);
-            border-bottom: 1px solid var(--border);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(8px);
-        }
-
-        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 4rem;
+            padding: 1rem;
+            background-color: var(--dark);
+            color: white;
         }
 
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--primary);
-            text-decoration: none;
         }
 
         .nav {
             display: flex;
-            gap: var(--space-md);
+            gap: 2rem;
         }
 
         .nav-link {
-            color: var(--text);
+            color: white;
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.2s;
         }
 
         .nav-link:hover {
             color: var(--primary);
         }
 
-        /* Hero Section */
-        .hero {
-            padding: calc(4rem + var(--space-xl)) 0 var(--space-xl);
-            background: linear-gradient(to bottom right, var(--primary), var(--secondary));
-            color: white;
-        }
-
-        .hero-content {
-            display: grid;
-            gap: var(--space-lg);
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            line-height: 1.2;
-            font-weight: 700;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            opacity: 0.9;
-        }
-
-        /* Blog Grid */
         .blog-section {
-            padding: var(--space-xl) 0;
+            padding: 3rem 0;
+            background-color: var(--light);
         }
 
-        .section-title {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: var(--space-lg);
-            text-align: center;
-        }
-
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--space-lg);
-        }
-
-        .blog-card {
-            background: var(--card-bg);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: var(--shadow-md);
-        }
-
-        .blog-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .blog-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .blog-content {
-            padding: var(--space-md);
-        }
-
-        .blog-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: var(--space-sm);
-            color: var(--dark);
-        }
-
-        .blog-excerpt {
-            color: var(--text-light);
-            margin-bottom: var(--space-sm);
-        }
-
-        .blog-meta {
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
-            font-size: 0.875rem;
-            color: var(--text-light);
-        }
-
-        /* Footer */
         .footer {
-            background: var(--dark);
+            background-color: var(--dark);
             color: white;
-            padding: var(--space-xl) 0;
-            margin-top: var(--space-xl);
+            padding: 3rem 0;
         }
 
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: var(--space-lg);
-        }
-
-        .footer-section h3 {
-            font-size: 1.25rem;
-            margin-bottom: var(--space-md);
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: var(--space-sm);
-        }
-
-        .footer-links a {
-            color: var(--light);
-            text-decoration: none;
-            opacity: 0.8;
-            transition: opacity 0.2s;
-        }
-
-        .footer-links a:hover {
-            opacity: 1;
-        }
-
-        /* Mobile Menu */
-        .mobile-menu-button {
-            display: none;
-            background: none;
-            border: none;
-            padding: var(--space-xs);
-            cursor: pointer;
+            gap: 2rem;
         }
 
         @media (max-width: 768px) {
-            .mobile-menu-button {
-                display: block;
-            }
-
             .nav {
                 display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--background);
-                padding: var(--space-md);
                 flex-direction: column;
-                border-top: 1px solid var(--border);
-                box-shadow: var(--shadow-md);
             }
 
             .nav.active {
                 display: flex;
             }
 
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .blog-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .section-title {
-                font-size: 1.5rem;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
+            .hero {
+                padding: 3rem 0;
             }
         }
     </style>
 </head>
 <body>
+
+    <!-- Header -->
     <header class="header">
-        <div class="container header-content">
-            <a href="/" class="logo">RektDeveloper</a>
-            <button class="mobile-menu-button">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M3 12h18M3 6h18M3 18h18"/>
-                </svg>
-            </button>
-            <nav class="nav">
-                <a href="#about" class="nav-link">About</a>
-                <a href="#blog" class="nav-link">Blog</a>
-                <a href="#contact" class="nav-link">Contact</a>
-                <a href="https://t.me/RektDevelopers" class="nav-link">Telegram</a>
-            </nav>
-        </div>
+        <a href="/" class="logo">RektDeveloper</a>
+        <nav class="nav">
+            <a href="#about" class="nav-link">About</a>
+            <a href="#blog" class="nav-link">Blog</a>
+            <a href="#contact" class="nav-link">Contact</a>
+            <a href="https://t.me/RektDevelopers" class="nav-link">Telegram</a>
+        </nav>
     </header>
 
+    <!-- Hero Section -->
     <section class="hero">
-        <div class="container hero-content">
+        <div>
             <h1>Your Insights, My Winning!</h1>
             <p>Market 📈 Patterns 🔥 APIs 💡 TypeScript 🤝</p>
             <p>Turning rekt into @RektDeveloper, one line at a time!</p>
         </div>
     </section>
 
+    <!-- Blog Section -->
     <section id="blog" class="blog-section">
         <div class="container">
-            <h2 class="section-title">Latest Insights</h2>
-            <div class="blog-grid">
-                <!-- Blog posts will be dynamically inserted here -->
+            <h2 class="text-3xl font-semibold text-center mb-6">Latest Insights</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Example Blog Cards -->
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <img src="https://via.placeholder.com/300" alt="Blog Image" class="w-full h-48 object-cover rounded-t-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Crypto Market Trends</h3>
+                    <p class="text-gray-600 mb-2">Get the latest insights into the crypto market and trading strategies.</p>
+                    <div class="flex justify-between text-sm text-gray-500">
+                        <span>Nov 17, 2024</span>
+                        <span>5 min read</span>
+                    </div>
+                </div>
+                <!-- Add more blog cards here -->
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="footer">
-        <div class="container footer-content">
-            <div class="footer-section">
-                <h3>About</h3>
+        <div class="footer-content container mx-auto">
+            <div>
+                <h3 class="text-xl font-semibold">About</h3>
                 <p>Sharing insights and analysis on markets, development, and technology.</p>
             </div>
-            <div class="footer-section">
-                <h3>Links</h3>
-                <ul class="footer-links">
-                    <li><a href="https://twitter.com/RektDeveloper">Twitter</a></li>
-                    <li><a href="https://github.com/RektDeveloper">GitHub</a></li>
-                    <li><a href="https://t.me/RektDevelopers">Telegram</a></li>
+            <div>
+                <h3 class="text-xl font-semibold">Links</h3>
+                <ul>
+                    <li><a href="https://twitter.com/RektDeveloper" class="text-white hover:text-primary">Twitter</a></li>
+                    <li><a href="https://github.com/RektDeveloper" class="text-white hover:text-primary">GitHub</a></li>
+                    <li><a href="https://t.me/RektDevelopers" class="text-white hover:text-primary">Telegram</a></li>
                 </ul>
             </div>
-            <div class="footer-section">
-                <h3>Contact</h3>
-                <ul class="footer-links">
-                    <li><a href="mailto:contact@rektdeveloper.com">Email</a></li>
-                    <li><a href="/contact">Contact Form</a></li>
+            <div>
+                <h3 class="text-xl font-semibold">Contact</h3>
+                <ul>
+                    <li><a href="mailto:contact@rektdeveloper.com" class="text-white hover:text-primary">Email</a></li>
+                    <li><a href="/contact" class="text-white hover:text-primary">Contact Form</a></li>
                 </ul>
             </div>
         </div>
     </footer>
 
+    <!-- JS Libraries -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        // Mobile menu toggle
+        // Mobile Menu Toggle
         const menuButton = document.querySelector('.mobile-menu-button');
         const nav = document.querySelector('.nav');
         
         menuButton.addEventListener('click', () => {
             nav.classList.toggle('active');
         });
-
-        // Fetch and display blog posts
-        async function fetchBlogs() {
-            try {
-                const response = await fetch('/api/blogs.json');
-                const blogs = await response.json();
-                
-                const blogGrid = document.querySelector('.blog-grid');
-                blogGrid.innerHTML = blogs.map(blog => `
-                    <article class="blog-card">
-                        <img src="${blog.image}" alt="${blog.title}" class="blog-image">
-                        <div class="blog-content">
-                            <h3 class="blog-title">${blog.title}</h3>
-                            <p class="blog-excerpt">${blog.excerpt}</p>
-                            <div class="blog-meta">
-                                <span>${blog.date}</span>
-                                <span>·</span>
-                                <span>${blog.readTime} min read</span>
-                            </div>
-                        </div>
-                    </article>
-                `).join('');
-            } catch (error) {
-                console.error('Error fetching blogs:', error);
-            }
-        }
-
-        // Initialize
-        fetchBlogs();
     </script>
 </body>
 </html>
