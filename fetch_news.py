@@ -21,6 +21,24 @@ params = {
 output_dir = 'news_pages'
 os.makedirs(output_dir, exist_ok=True)
 
+# Ad Script to be included in the page
+ad_script = """
+<script async="async" data-cfasync="false" src="//pl25032274.profitablecpmrate.com/12caf3e1b967c725bc896a6a73caf0b6/invoke.js"></script>
+<div id="container-12caf3e1b967c725bc896a6a73caf0b6"></div> 
+<script type='text/javascript' src='//pl25032294.profitablecpmrate.com/0f/9f/9c/0f9f9c5c85bb14b4da3ce62b002175ec.js'></script> 
+<script type='text/javascript' src='//pl25013478.profitablecpmrate.com/66/17/d7/6617d7163a895c776c2db7800c9d3306.js'></script> 
+<script type="text/javascript">
+    atOptions = {
+        'key' : 'f6669a79207268aad812db292d6b5470',
+        'format' : 'iframe',
+        'height' : 90,
+        'width' : 728,
+        'params' : {}
+    };
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/f6669a79207268aad812db292d6b5470/invoke.js"></script>
+"""
+
 # HTML Template for Articles (Full Content Page)
 article_html_template = """
 <!DOCTYPE html>
@@ -35,13 +53,6 @@ article_html_template = """
     <meta property="og:description" content="{{ description }}">
     <meta property="og:image" content="{{ image_url }}">
     <meta property="og:url" content="{{ url }}">
-    <meta property="og:type" content="article">
-    <meta property="og:site_name" content="Crypto News">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ title }}">
-    <meta name="twitter:description" content="{{ description }}">
-    <meta name="twitter:image" content="{{ image_url }}">
-    <meta name="twitter:url" content="{{ url }}">
     <title>{{ title }} - Crypto News</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -60,12 +71,6 @@ article_html_template = """
             </div>
         </div>
     </nav>
-
-    <!-- Ad Banner -->
-    <div class="bg-gray-800 text-white text-center py-4">
-        <p class="font-semibold">Advertise with us!</p>
-        <p>Contact us for ad placement on our website.</p>
-    </div>
 
     <!-- Article Content -->
     <main class="max-w-4xl mx-auto px-4 py-8">
@@ -99,12 +104,9 @@ article_html_template = """
             </div>
         </article>
 
-        <!-- Related Articles -->
+        <!-- Ad Script -->
         <div class="mt-8">
-            <h2 class="text-2xl font-bold text-gray-900 mb-4">Related Articles</h2>
-            <div class="grid grid-cols-2 gap-6">
-                <!-- Placeholder for related articles -->
-            </div>
+            {{ ad_script | safe }}
         </div>
     </main>
 
@@ -148,13 +150,6 @@ index_html_template = """
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Crypto News Site - Latest News in Crypto">
     <meta name="keywords" content="crypto, bitcoin, ethereum, news, market">
-    <meta name="author" content="Crypto News">
-    <meta property="og:title" content="Crypto News - Latest Articles">
-    <meta property="og:description" content="Stay informed with the latest updates from the crypto world">
-    <meta property="og:image" content="https://www.example.com/images/logo.png">
-    <meta property="og:url" content="https://www.example.com">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
     <title>Crypto News - Latest Articles</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -174,99 +169,100 @@ index_html_template = """
         </div>
     </nav>
 
-    <!-- Ad Banner -->
-    <div class="bg-gray-800 text-white text-center py-4">
-        <p class="font-semibold">Advertise with us!</p>
-        <p>Contact us for ad placement on our website.</p>
+    <!-- Hero Section -->
+    <div class="bg-blue-700 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <h1 class="text-4xl font-bold mb-4">Latest Cryptocurrency News</h1>
+            <p class="text-xl text-blue-100">Stay informed with the latest updates from the crypto world</p>
+        </div>
     </div>
 
-    <!-- Latest Articles Section -->
-    <main class="max-w-7xl mx-auto px-4 py-8">
-        <h1 class="text-3xl font-bold text-gray-900 mb-6">Latest Articles</h1>
-        <div class="grid grid-cols-3 gap-6">
+    <!-- Featured Articles -->
+    <div class="max-w-7xl mx-auto px-4 py-12">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {% for article in articles %}
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <img src="{{ article.image_url }}" alt="Article Image" class="w-full h-56 object-cover">
-                <div class="p-4">
-                    <h2 class="text-xl font-semibold text-gray-800">{{ article.title }}</h2>
-                    <p class="text-gray-600 mt-2">{{ article.description }}</p>
-                    <a href="{{ article.url }}" class="text-blue-600 mt-4 inline-block">Read More &raquo;</a>
+            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                <img src="{{ article.imageurl }}" alt="Article Image" class="w-full h-64 object-cover">
+                <div class="p-6">
+                    <h2 class="text-xl font-bold text-gray-900 mb-4">{{ article.title }}</h2>
+                    <p class="text-gray-600 mb-4">{{ article.body | truncate(100) }}</p>
+                    <a href="{{ article.url }}" class="text-blue-600 hover:text-blue-800">Read More</a>
                 </div>
             </div>
             {% endfor %}
         </div>
-    </main>
+    </div>
+
+    <!-- Ad Script -->
+    <div class="mt-8">
+        {{ ad_script | safe }}
+    </div>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white mt-12">
-        <div class="max-w-7xl mx-auto px-4 py-8">
-            <div class="grid grid-cols-3 gap-8">
-                <div>
-                    <h3 class="text-lg font-bold mb-4">About Us</h3>
-                    <p class="text-gray-400">Your trusted source for cryptocurrency news and analysis.</p>
-                </div>
-                <div>
-                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-white">Home</a></li>
-                        <li><a href="#" class="hover:text-white">Markets</a></li>
-                        <li><a href="#" class="hover:text-white">Analysis</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-lg font-bold mb-4">Follow Us</h3>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin"></i></a>
-                    </div>
-                </div>
-            </div>
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4">
+            <p class="text-center text-gray-400">&copy; 2024 Crypto News. All rights reserved.</p>
         </div>
     </footer>
 </body>
 </html>
 """
 
+# Fetch and parse the news
 def fetch_news():
     response = requests.get(URL, params=params)
+    
+    # Check if the response is successful
     if response.status_code == 200:
-        return response.json()['data']['feeds']
+        try:
+            data = response.json()
+            print(json.dumps(data, indent=4))  # For debugging
+            return data['data']['feeds']
+        except KeyError as e:
+            print(f"Error: Missing expected data key: {str(e)}")
+            return []
+        except json.JSONDecodeError:
+            print("Error: Failed to decode JSON response")
+            return []
     else:
         print(f"Failed to retrieve data. Status code: {response.status_code}")
         return []
 
-def generate_article_html(article):
-    template = Template(article_html_template)
-    return template.render(
-        title=article['title'],
-        description=article['description'],
-        image_url=article['imageurl'],
-        body=article['body'],
-        url=article['url'],
-        author=article['source'],
-        published_on=datetime.fromtimestamp(article['published_on']).strftime('%B %d, %Y'),
-        tags=article.get('tags', ''),
-    )
-
-def generate_index_html(articles):
-    template = Template(index_html_template)
-    return template.render(articles=articles)
-
-# Main Execution
-if __name__ == "__main__":
-    news_articles = fetch_news()
-
-    # Generate Article Pages
-    for article in news_articles:
-        article_html = generate_article_html(article)
-        article_filename = f"{article['guid'].split('/')[-1]}.html"
-        with open(os.path.join(output_dir, article_filename), 'w', encoding='utf-8') as f:
+# Save the articles as individual HTML files
+def save_articles(articles):
+    for article in articles:
+        article_html = Template(article_html_template).render(
+            title=article['title'],
+            description=article['body'],
+            keywords="crypto, bitcoin, ethereum, regulation, news",
+            author=article['source_info']['name'],
+            published_on=datetime.utcfromtimestamp(article['published_on']).strftime('%B %d, %Y'),
+            image_url=article['imageurl'],
+            body=article['body'],
+            tags=article['categories'],
+            url=article['url'],
+            ad_script=ad_script
+        )
+        
+        article_file = os.path.join(output_dir, f"{article['id']}.html")
+        with open(article_file, 'w') as f:
             f.write(article_html)
-    
-    # Generate Index Page
-    index_html = generate_index_html(news_articles)
-    with open(os.path.join(output_dir, 'index.html'), 'w', encoding='utf-8') as f:
+
+# Save the index page
+def save_index(articles):
+    index_html = Template(index_html_template).render(
+        articles=articles,
+        ad_script=ad_script
+    )
+    with open("index.html", 'w') as f:
         f.write(index_html)
 
-    print(f"{len(news_articles)} articles and index page generated.")
+# Main function
+def main():
+    articles = fetch_news()
+    if articles:
+        save_articles(articles)
+        save_index(articles)
+
+if __name__ == "__main__":
+    main()
