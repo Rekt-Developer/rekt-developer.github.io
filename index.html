@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rekt Developer | Smart Contract Developer & Security Researcher</title>
-    <meta name="description" content="Smart Contract Developer specializing in DeFi, Web3 Security, and dApp development">
+    <title>Rekt Developer - Smart Contract Wizardry & Security Excellence</title>
+    <meta name="description" content="Unleash the power of DeFi with our expert smart contract development and security services. Trust our team for innovative blockchain solutions.">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,6 +23,7 @@
             --card-bg: #1a1a1a;
             --text-primary: #ffffff;
             --text-secondary: #b3b3b3;
+            --transition-duration: 0.3s;
         }
 
         /* Base Styles */
@@ -31,6 +32,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'IBM Plex Mono', monospace;
+            transition: background-color var(--transition-duration) ease, color var(--transition-duration) ease;
         }
 
         body {
@@ -67,13 +69,13 @@
         }
 
         .header h1 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin-bottom: 0.5rem;
             animation: fadeIn 1s ease;
         }
 
         .header p {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             opacity: 0.9;
             animation: fadeIn 1s ease 0.2s backwards;
         }
@@ -93,41 +95,41 @@
         }
 
         .profile-pic {
-            width: 200px;
-            height: 200px;
+            width: 250px;
+            height: 250px;
             border-radius: 50%;
             border: 4px solid var(--primary-red);
             margin: 1rem auto;
             display: block;
             object-fit: cover;
-            transition: transform 0.3s ease;
+            transition: transform var(--transition-duration) ease;
         }
 
         .profile-pic:hover {
-            transform: scale(1.05);
+            transform: scale(1.1) rotate(3deg);
             animation: pulse 2s infinite;
         }
 
         /* Card Styles */
         .card {
             background-color: var(--card-bg);
-            border-radius: 10px;
+            border-radius: 12px;
             padding: 2rem;
             margin-bottom: 2rem;
             border: 1px solid rgba(255, 0, 0, 0.1);
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            transition: transform var(--transition-duration) ease, border-color var(--transition-duration) ease;
             animation: fadeIn 1s ease;
         }
 
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
             border-color: var(--primary-red);
         }
 
         .card h2 {
             color: var(--primary-red);
             margin-bottom: 1.5rem;
-            font-size: 1.8rem;
+            font-size: 2rem;
         }
 
         /* Tech Stack */
@@ -144,8 +146,8 @@
             color: white;
             padding: 0.5rem 1rem;
             border-radius: 20px;
-            font-size: 0.9rem;
-            transition: transform 0.3s ease, background-color 0.3s ease;
+            font-size: 1rem;
+            transition: transform var(--transition-duration) ease, background-color var(--transition-duration) ease;
         }
 
         .tech-badge:hover {
@@ -156,7 +158,7 @@
         /* Projects Grid */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.5rem;
             margin-top: 1.5rem;
         }
@@ -164,18 +166,18 @@
         .project-card {
             background-color: rgba(255, 0, 0, 0.1);
             padding: 1.5rem;
-            border-radius: 8px;
-            transition: transform 0.3s ease;
+            border-radius: 10px;
+            transition: transform var(--transition-duration) ease;
         }
 
         .project-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
         }
 
         /* Stats Section */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
             margin-top: 1.5rem;
         }
@@ -184,8 +186,8 @@
             text-align: center;
             padding: 1.5rem;
             background-color: rgba(255, 0, 0, 0.1);
-            border-radius: 8px;
-            transition: transform 0.3s ease;
+            border-radius: 10px;
+            transition: transform var(--transition-duration) ease;
         }
 
         .stat-card:hover {
@@ -193,7 +195,7 @@
         }
 
         .stat-number {
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: var(--primary-red);
             font-weight: bold;
         }
@@ -208,29 +210,29 @@
 
         .social-link {
             color: var(--text-secondary);
-            font-size: 1.5rem;
-            transition: color 0.3s ease, transform 0.3s ease;
+            font-size: 1.8rem;
+            transition: color var(--transition-duration) ease, transform var(--transition-duration) ease;
         }
 
         .social-link:hover {
             color: var(--primary-red);
-            transform: translateY(-3px);
+            transform: translateY(-5px);
         }
 
         /* Activity Graph */
         .activity-graph {
             width: 100%;
-            height: 100px;
+            height: 150px;
             display: flex;
             align-items: flex-end;
-            gap: 3px;
+            gap: 5px;
             margin-top: 1.5rem;
         }
 
         .activity-bar {
             flex: 1;
             background-color: var(--primary-red);
-            transition: height 0.3s ease;
+            transition: height var(--transition-duration) ease;
         }
 
         /* Footer */
@@ -242,6 +244,25 @@
         }
 
         /* Responsive Design */
+        @media (max-width: 1024px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .profile-pic {
+                width: 200px;
+                height: 200px;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 2rem;
@@ -253,11 +274,15 @@
             }
 
             .card {
-                padding: 1.5rem;
+                padding: 1rem;
             }
 
-            .projects-grid {
-                grid-template-columns: 1fr;
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .social-link {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -265,19 +290,19 @@
 <body>
     <div class="header">
         <h1>Rekt Developer</h1>
-        <p>Your Insights, My Winning! 💡</p>
+        <p>Unleashing Blockchain Potential, One Smart Contract at a Time!</p>
     </div>
 
     <div class="container">
         <div class="profile">
             <img src="me.jpg" alt="Rekt Developer" class="profile-pic">
-            <h2>Smart Contract Developer & Security Researcher</h2>
-            <p>🌐 Based in the Blockchain Space</p>
+            <h2>Smart Contract Wizard & Security Guru</h2>
+            <p>🌐 Revolutionizing the Blockchain Space</p>
         </div>
 
         <div class="card">
-            <h2>About Me</h2>
-            <p>Specialized in DeFi protocol development and smart contract security. Passionate about building secure and efficient blockchain solutions.</p>
+            <h2>About Us</h2>
+            <p>We are a team of experts specializing in DeFi protocol development and smart contract security. Our passion lies in crafting secure and efficient blockchain solutions that drive innovation.</p>
             <div class="tech-stack">
                 <span class="tech-badge">Solidity</span>
                 <span class="tech-badge">TypeScript</span>
@@ -287,45 +312,51 @@
                 <span class="tech-badge">React</span>
                 <span class="tech-badge">Web3.js</span>
                 <span class="tech-badge">Ethereum</span>
+                <span class="tech-badge">Blockchain</span>
+                <span class="tech-badge">Web3</span>
             </div>
         </div>
 
         <div class="card">
-            <h2>Current Projects</h2>
+            <h2>Our Expertise</h2>
             <div class="projects-grid">
                 <div class="project-card">
                     <h3>Smart Contract Auditing</h3>
-                    <p>Conducting comprehensive security audits of DeFi protocols</p>
+                    <p>We conduct comprehensive security audits, ensuring your DeFi protocols are fortified against vulnerabilities.</p>
                 </div>
                 <div class="project-card">
                     <h3>DeFi Protocol Development</h3>
-                    <p>Building next-gen lending and borrowing platforms</p>
+                    <p>Our team builds cutting-edge lending and borrowing platforms, pushing the boundaries of blockchain technology.</p>
                 </div>
                 <div class="project-card">
                     <h3>Security Tools</h3>
-                    <p>Developing automated vulnerability scanners</p>
+                    <p>We develop automated vulnerability scanners, empowering developers to create secure smart contracts.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Blockchain Consulting</h3>
+                    <p>Need guidance on your blockchain journey? Our experts offer strategic insights and tailored solutions.</p>
                 </div>
             </div>
         </div>
 
         <div class="card">
-            <h2>Statistics</h2>
+            <h2>Our Impact</h2>
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-number">50+</div>
+                    <div class="stat-number">75</div>
                     <p>Contracts Audited</p>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">200+</div>
+                    <div class="stat-number">350</div>
                     <p>Vulnerabilities Found</p>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">30+</div>
+                    <div class="stat-number">50</div>
                     <p>Projects Completed</p>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">1.2k+</div>
-                    <p>GitHub Commits</p>
+                    <div class="stat-number">2.5k</div>
+                    <p>GitHub Stars</p>
                 </div>
             </div>
         </div>
@@ -333,18 +364,18 @@
         <div class="card">
             <h2>Activity</h2>
             <div class="activity-graph">
-                <div class="activity-bar" style="height: 60%;"></div>
-                <div class="activity-bar" style="height: 80%;"></div>
-                <div class="activity-bar" style="height: 40%;"></div>
-                <div class="activity-bar" style="height: 90%;"></div>
                 <div class="activity-bar" style="height: 70%;"></div>
+                <div class="activity-bar" style="height: 90%;"></div>
                 <div class="activity-bar" style="height: 50%;"></div>
-                <div class="activity-bar" style="height: 85%;"></div>
-                <div class="activity-bar" style="height: 65%;"></div>
-                <div class="activity-bar" style="height: 75%;"></div>
-                <div class="activity-bar" style="height: 55%;"></div>
+                <div class="activity-bar" style="height: 100%;"></div>
+                <div class="activity-bar" style="height: 80%;"></div>
+                <div class="activity-bar" style="height: 60%;"></div>
                 <div class="activity-bar" style="height: 95%;"></div>
-                <div class="activity-bar" style="height: 45%;"></div>
+                <div class="activity-bar" style="height: 75%;"></div>
+                <div class="activity-bar" style="height: 85%;"></div>
+                <div class="activity-bar" style="height: 55%;"></div>
+                <div class="activity-bar" style="height: 100%;"></div>
+                <div class="activity-bar" style="height: 65%;"></div>
             </div>
         </div>
 
@@ -355,11 +386,17 @@
             <a href="https://t.me/RektDevelopers" class="social-link" target="_blank" rel="noopener noreferrer">
                 <i class="fab fa-telegram"></i>
             </a>
+            <a href="https://twitter.com/RektDevelopers" class="social-link" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/RektDevelopers" class="social-link" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
         </div>
     </div>
 
     <div class="footer">
-        <p>Made with ❤️ by Rekt Developer</p>
+        <p>Crafted with ❤️ by Rekt Developer</p>
     </div>
 
     <script>
@@ -384,7 +421,7 @@
             // Add hover effect to project cards
             document.querySelectorAll('.project-card').forEach(card => {
                 card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-10px)';
+                    this.style.transform = 'translateY(-15px)';
                 });
                 card.addEventListener('mouseleave', function() {
                     this.style.transform = 'translateY(0)';
