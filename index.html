@@ -1,82 +1,788 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="RektDeveloper - Latest Crypto News and Insights">
-    <meta name="keywords" content="crypto, market analysis, Bitcoin, Ethereum, crypto news">
-    <meta name="author" content="RektDeveloper">
-    <title>RektDeveloper - Latest Crypto News</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-        }
-
-        header {
-            background-color: #2563eb;
-            padding: 20px;
-            color: white;
-            text-align: center;
-        }
-
-        .articles {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 20px;
-            padding: 20px;
-        }
-
-        .article-card {
-            background-color: white;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .article-card img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-
-        .article-card h2 {
-            font-size: 1.5rem;
-            margin-top: 15px;
-        }
-
-        .article-card p {
-            font-size: 1rem;
-            color: #666;
-            margin-top: 10px;
-        }
-
-        .article-card a {
-            text-decoration: none;
-            color: #2563eb;
-            margin-top: 10px;
-            display: block;
-            text-align: center;
-        }
-    </style>
+    <meta name="description" content="Crypto News Site - Latest News in Crypto">
+    <meta name="keywords" content="crypto, bitcoin, ethereum, news, market">
+    <title>Crypto News - Latest Articles</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
-<body>
-    <header>
-        <h1>Latest Crypto News</h1>
-    </header>
-
-    <div class="articles">
-        {% for article in articles %}
-        <div class="article-card">
-            <img src="{{ article.image_url }}" alt="Article Image">
-            <h2>{{ article.title }}</h2>
-            <p>{{ article.body[:150] }}...</p>
-            <a href="news_pages/{{ article.id }}.html">Read Full Article</a>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-blue-600 shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="#" class="text-white text-2xl font-bold">Crypto News</a>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-white hover:text-blue-200">Home</a>
+                    <a href="#" class="text-white hover:text-blue-200">Markets</a>
+                    <a href="#" class="text-white hover:text-blue-200">Analysis</a>
+                </div>
+            </div>
         </div>
-        {% endfor %}
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="bg-blue-700 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <h1 class="text-4xl font-bold mb-4">Latest Cryptocurrency News</h1>
+            <p class="text-xl text-blue-100">Stay informed with the latest updates from the crypto world</p>
+        </div>
     </div>
+
+    <!-- Featured Articles -->
+    <div class="max-w-7xl mx-auto px-4 py-12">
+        <h2 class="text-3xl font-bold mb-8">Featured Stories</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://images.cryptocompare.com/news/default/cointelegraph.png" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">BTC price 'issues' include $70K dip despite Bitcoin whale accumulation</h3>
+                    <p class="text-gray-600 mb-4">Bitcoin could still see "healthy cooling" before its trip to $100,000 and above, the latest BTC price analysis says....</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36457784.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 17, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://resources.cryptocompare.com/news/16/20057318.jpeg" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">Why is Solana (SOL) price up today?</h3>
+                    <p class="text-gray-600 mb-4">Solana price is up today, registering a 13% ascent over the past 24 hours as the wider crypto community continues to celebrate Donald Trump’s win....</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/20057318.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 17, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://images.cryptocompare.com/news/default/cointelegraph.png" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">OP_VAULT explained: How it could enhance Bitcoin security</h3>
+                    <p class="text-gray-600 mb-4">OP_VAULT is a proposed upgrade to Bitcoin that introduces advanced security features, including multisignature vaults and conditional spending rules v...</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36453765.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 17, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://images.cryptocompare.com/news/default/cointelegraph.png" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">NFTs weekly sales surge 94% as crypto market continues bullish run</h3>
+                    <p class="text-gray-600 mb-4">The Ethereum network led the week with $67 million in NFT sales, while Bitcoin-based NFTs recorded $60 million in sales over the last seven days....</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36451216.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 17, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://images.cryptocompare.com/news/default/cointelegraph.png" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">'More brutal than I expected' — Lyn Alden on ETH/BTC post-election low</h3>
+                    <p class="text-gray-600 mb-4">Macro economist Lyn Alden admits she has been a “polite long-term Ethereum bear,” but she was surprised by Ether’s performance after the United States...</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36440190.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 17, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://images.cryptocompare.com/news/default/cointelegraph.png" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">Bitcoin long-term holders do not see $90K 'as an enemy' — Analyst</h3>
+                    <p class="text-gray-600 mb-4">A crypto analyst reiterates that "some of these" Bitcoiners have been “here for many years,” and $90,000 is the “first target” for profit-taking....</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36433078.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 17, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://images.cryptocompare.com/news/default/cointelegraph.png" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">Saylor doubts $60K Bitcoin retrace, BTC ETF options, and more: Hodler’s Digest, Nov. 10 – 16</h3>
+                    <p class="text-gray-600 mb-4">Bitcoin trader eyes $100K price tag by Thanksgiving day in US, Bitcoin ETF options pass ‘second hurdle’: Hodlers Digest...</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36423355.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 16, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://images.cryptocompare.com/news/default/cointelegraph.png" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">Ripple Labs and CEO come under fire amid rumors of a Trump meeting</h3>
+                    <p class="text-gray-600 mb-4">Ripple's native currency, XRP, surged by more than 17% on November 15, based on expectations of a friendlier regulatory climate in the US....</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36419051.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 16, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://resources.cryptocompare.com/news/5/36413343.jpeg" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">An Interview With El Salvador’s Top Crypto Regulator: ‘Developing Countries Can Lead the Financial Revolution’</h3>
+                    <p class="text-gray-600 mb-4">The National Commission of Digital Assets is the agency in charge of regulating crypto in El Salvador, the first nation to accept Bitcoin as legal ten...</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36413343.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 16, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://resources.cryptocompare.com/news/16/13806811.jpeg" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">Here’s what happened in crypto today</h3>
+                    <p class="text-gray-600 mb-4">Need to know what happened in crypto today? Here is the latest news on daily trends and events impacting Bitcoin price, blockchain, DeFi, NFTs, Web3 a...</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/13806811.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 16, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://resources.cryptocompare.com/news/5/36410135.jpeg" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">XRP Price Skyrockets Past $1 as SEC Faces Legal Troubles And Favorable Regulatory Shift Looms</h3>
+                    <p class="text-gray-600 mb-4">The price surge is consistent with the recent bullish positioning in the options market....</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36410135.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 16, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://images.cryptocompare.com/news/default/cointelegraph.png" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">'There is a global race underway for Bitcoin' — Anthony Pompliano</h3>
+                    <p class="text-gray-600 mb-4">The election of a pro-crypto President in the United States and growing macroeconomic turmoil will continue to drive investors to Bitcoin....</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36407502.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 16, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://images.cryptocompare.com/news/default/cointelegraph.png" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">Ethereum 'dying a slow death' as ETH breaks 8-year trend vs. Bitcoin</h3>
+                    <p class="text-gray-600 mb-4">Ether could drop another 50% against Bitcoin by the end of 2024 after entering a technical breakdown setup....</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36400401.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 16, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://images.cryptocompare.com/news/default/cointelegraph.png" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">Bitcoin breakout or black swan? $90K BTC price lacks gold, stocks high</h3>
+                    <p class="text-gray-600 mb-4">Bitcoin bulls have sealed BTC price all-time highs in US dollar terms but have yet to match macro asset records from 2021....</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36395086.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 16, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://images.cryptocompare.com/news/default/cointelegraph.png" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">Trump policies could take DeFi, BTC staking mainstream — Redstone co-founder</h3>
+                    <p class="text-gray-600 mb-4">Trump’s administration could push DeFi from niche to mainstream, with crypto advocates eyeing potential pro-crypto policy shifts....</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36392066.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 16, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://images.cryptocompare.com/news/default/cointelegraph.png" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">No apology can 'undo the damage' Gary Gensler has caused: Tyler Winklevoss</h3>
+                    <p class="text-gray-600 mb-4">"Let's be clear on one thing. Gary Gensler is evil," Tyler Winklevoss said in a detailed thread about the SEC chair amid resignation rumors....</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36387334.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 16, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://images.cryptocompare.com/news/default/cointelegraph.png" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">Bitcoin ETF options pass 'second hurdle' with CFTC clearance</h3>
+                    <p class="text-gray-600 mb-4">ETF analyst Eric Balchunas says "the ball" is now with the Options Clearing Corporation, forecasting that spot Bitcoin ETF options will "list very soo...</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36375448.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 16, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://resources.cryptocompare.com/news/5/36366590.jpeg" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">What Does Trump's Win Mean for Crypto?</h3>
+                    <p class="text-gray-600 mb-4">Donald Trump and the Republican Party at large had a strong 2024 election, winning the presidency, Senate and House. This almost certainly guarantees ...</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36366590.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 15, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://images.cryptocompare.com/news/default/cointelegraph.png" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">Crypto Biz: MicroStrategy’s Bitcoin bet swells</h3>
+                    <p class="text-gray-600 mb-4">This week’s Crypto Biz features MicroStrategy’s Bitcoin strategy, Coinbase’s and Kaiko’s recent acquisitions, MARA’s third-quarter earnings, and MoonP...</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36363917.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 15, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://images.cryptocompare.com/news/default/cointelegraph.png" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">Helix mixer operator gets 3 years in prison for money laundering</h3>
+                    <p class="text-gray-600 mb-4">Larry Harmon laundered 350,000 BTC, but he was treated leniently for his help in jailing Roman Sterlingov....</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36363337.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 15, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://images.cryptocompare.com/news/default/cointelegraph.png" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">US gov’t job could allow Elon Musk to defer capital gains tax</h3>
+                    <p class="text-gray-600 mb-4">The “DOGE” department proposed by Elon Musk could allow the Tesla CEO to divest many of his assets and defer paying taxes....</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36361516.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 15, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://resources.cryptocompare.com/news/5/36360265.jpeg" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">Bank Clients Just Dipped Their Toes Into Bitcoin ETFs, but Q4 Could See a FOMO Spike</h3>
+                    <p class="text-gray-600 mb-4">Wealth management clients of Wall Street banks like Goldman Sachs, Bank of America, Morgan Stanley in the third quarter continued to modestly accumula...</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36360265.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 15, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://images.cryptocompare.com/news/default/cointelegraph.png" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">Odds favor Solana ETF in 2025: VanEck</h3>
+                    <p class="text-gray-600 mb-4">The United States has only approved ETFs for Bitcoin and Ether, versus some 30 digital asset types in Europe, according to the Financial Times....</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36358682.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 15, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://images.cryptocompare.com/news/default/cointelegraph.png" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">Bitcoin could hit $100K November, Trump mulls crypto-friendly CFTC chair: Finance Redefined</h3>
+                    <p class="text-gray-600 mb-4">Expectations of improving economic policies under the Trump administration may drive Bitcoin’s price above $100,000 before the end of the month....</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36357922.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 15, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://images.cryptocompare.com/news/default/cointelegraph.png" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">Price analysis 11/15: BTC, ETH, SOL, BNB, DOGE, XRP, ADA, SHIB, TON, AVAX</h3>
+                    <p class="text-gray-600 mb-4">Bitcoin is witnessing a shallow pullback, but bulls still anticipate a rally toward $100,000 in the short-term....</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36357170.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 15, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://images.cryptocompare.com/news/default/cointelegraph.png" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">Bitcoin price metrics and ‘influx’ of stablecoins to exchanges hint at rally continuation</h3>
+                    <p class="text-gray-600 mb-4">Analysts say a “higher than normal influx of stablecoins to exchanges is just one sign that traders are preparing for the next leg of the Bitcoin rall...</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36354937.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 15, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://images.cryptocompare.com/news/default/cointelegraph.png" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">Dogecoin investor lawsuit against Elon Musk dropped</h3>
+                    <p class="text-gray-600 mb-4">Tesla CEO Elon Musk is often associated with Dogecoin after the businessman mentioned the memecoin on various channels in 2021....</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36354728.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 15, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://resources.cryptocompare.com/news/16/18137853.jpeg" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">Is Bitcoin price going to crash again?</h3>
+                    <p class="text-gray-600 mb-4">After hitting new all-time highs, Bitcoin hints at early signs of short-term correction to reset its overleveraged futures market....</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/18137853.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 15, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://images.cryptocompare.com/news/default/cointelegraph.png" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">NY prosecutor suggests office will scale back crypto cases</h3>
+                    <p class="text-gray-600 mb-4">Scott Hartman reportedly said authorities in New York’s Southern District had filed “a lot of big cases” after a crypto market downturn but suggested ...</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36353241.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 15, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://resources.cryptocompare.com/news/5/36351443.jpeg" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">This OG Bitcoin Investor Just Turned $120 Into $178M</h3>
+                    <p class="text-gray-600 mb-4">The user held BTC from when it was worth $0.06 all the way up to $90,000....</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36351443.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 15, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://resources.cryptocompare.com/news/5/36348187.jpeg" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">From Real Estate and Stocks: Former Premier League Player's New-Found Love of Bitcoin</h3>
+                    <p class="text-gray-600 mb-4">Soccer player George Boyd made over 100 Premier League appearances and has now joined crypto ETF issuer Jacobi Asset Management as an ambassador....</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36348187.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 15, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://images.cryptocompare.com/news/default/cointelegraph.png" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">Bitcoin investment ‘material impact’ captures pension funds’ attention</h3>
+                    <p class="text-gray-600 mb-4">Even a small allocation of Bitcoin in a traditional investment fund can be beneficial....</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36346489.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 15, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://images.cryptocompare.com/news/default/cointelegraph.png" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">NYSE Arca files to list Bitwise crypto index ETP</h3>
+                    <p class="text-gray-600 mb-4">NYSE Arca has filed with the SEC to list the Bitwise 10 Crypto Index Fund, aiming to convert the $1.3 billion trust into a regulated ETP....</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36344693.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 15, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://resources.cryptocompare.com/news/5/36344557.jpeg" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">First Mover Americas: Bitcoin Shaky as Traders Bank Profits</h3>
+                    <p class="text-gray-600 mb-4">The latest price moves in bitcoin (BTC) and crypto markets in context for Nov. 15, 2024. First Mover is CoinDesk’s daily newsletter that contextualize...</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36344557.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 15, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://images.cryptocompare.com/news/default/cryptocompare.png" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">Market Analysis Report (15 Nov 2024)</h3>
+                    <p class="text-gray-600 mb-4">Hacker Who Stole $4.5 Billion in Bitcoin Sentenced to Five Years | Tether Launches New Platform for Real-World Asset Tokenization | Pennsylvania Lawma...</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36341539.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 15, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://images.cryptocompare.com/news/default/cointelegraph.png" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">Goldman Sachs holds $710M in Bitcoin ETFs — SEC filing</h3>
+                    <p class="text-gray-600 mb-4">Since the second quarter, Goldman Sachs has added $300 million to its portfolio in Bitcoin ETF holdings, increasing exposure by 71%....</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36341066.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 15, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://resources.cryptocompare.com/news/5/36337636.jpeg" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">Bitcoin ETFs Witness Third Highest Outflow Since Launch, the Other Two Times Foreshadowed Price Bottoms</h3>
+                    <p class="text-gray-600 mb-4">Bitcoin's price has now corrected approximately 6% since the all-time high break on Nov. 13....</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36337636.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 15, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://resources.cryptocompare.com/news/5/36337265.jpeg" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">Aave Gauges Community Interest for Expansion to Bitcoin Layer 2 Spiderchain</h3>
+                    <p class="text-gray-600 mb-4">The potential deployment on a Bitcoin layer-2 by the largest DeFi lending protocol highlights the appetite for harnessing the original blockchain for ...</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36337265.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 15, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://images.cryptocompare.com/news/default/cointelegraph.png" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">Don’t be delusional: Decentralization doesn’t compensate for regulation</h3>
+                    <p class="text-gray-600 mb-4">DeFi needs regulation to build trust, attract institutional investment, and ensure long-term viability despite its decentralized nature....</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36333291.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 15, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://resources.cryptocompare.com/news/5/36333362.jpeg" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">Is Bitcoin on Shaky Ground? Market Signals Reflect Patterns That Foretold the Recent Slide in Trump Media Shares</h3>
+                    <p class="text-gray-600 mb-4">Shares in Trump media experienced a similar dynamic before the recent price slide....</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36333362.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 15, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://images.cryptocompare.com/news/default/cointelegraph.png" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">Bitcoin will not fall to $60K with no ‘threats in the near-term’ — Michael Saylor</h3>
+                    <p class="text-gray-600 mb-4">Michael Saylor is planning a party for Bitcoin to hit $100,000 this year and says it won’t fall to $60,000 as predicted by some analysts....</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36329315.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 15, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://images.cryptocompare.com/news/default/cointelegraph.png" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">Consensys pushes back against regulatory ‘gaslighting’ with new sovereignty platform</h3>
+                    <p class="text-gray-600 mb-4">Crypto companies have been “living in fear in a gas-lit world for a long time,” said Ethereum co-founder Joe Lubin....</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36328025.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 15, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://images.cryptocompare.com/news/default/cointelegraph.png" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">Bitcoin price can hit $100K by Thanksgiving if bulls hold key level</h3>
+                    <p class="text-gray-600 mb-4">Bitcoin is consolidating after new all-time highs, but bulls cannot afford to lose track of too many potential support levels, says BTC price analysis...</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36327557.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 15, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://images.cryptocompare.com/news/default/cointelegraph.png" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">Trump trade over? Bitcoin, Ethereum ETFs see first outflow since election</h3>
+                    <p class="text-gray-600 mb-4">Spot crypto ETFs in the US saw outflows for the first time since Donald Trump was elected president, as both Bitcoin and Ethereum fell on the day....</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36326945.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 15, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://resources.cryptocompare.com/news/5/36326878.jpeg" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">Razzlekhan's Husband Gets Five Years Prison Sentence for Bitfinex Hack</h3>
+                    <p class="text-gray-600 mb-4">For her role in the theft and laundering of around 120,000 bitcoin, Razzlekhan will receive her sentence on Nov. 18....</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36326878.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 15, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://resources.cryptocompare.com/news/5/36326207.jpeg" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">Trump Names Former SEC Chair Jay Clayton to DOJ Office, the Same Office That Prosecuted SBF</h3>
+                    <p class="text-gray-600 mb-4">President-elect Donald Trump said former Securities and Exchange Commission Chair Jay Clayton would be his U.S. Attorney for the Southern District of ...</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36326207.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 15, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://resources.cryptocompare.com/news/5/36326206.jpeg" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">XRP Jumps 17%, Outperforms Rest of the Market as Rally Cools; Trader Thinks $120K Bitcoin Target Still in Play</h3>
+                    <p class="text-gray-600 mb-4">“We believe that the underlying strength in BTC represents a systematic shift in the market in anticipation of Trump’s return to office,” QCP Capital ...</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36326206.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 15, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://images.cryptocompare.com/news/default/cointelegraph.png" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">Consensys decentralized Infura launches as EigenLayer AVS</h3>
+                    <p class="text-gray-600 mb-4">The decentralized Web3 marketplace will leverage EigenLayer’s infrastructure to improve accessibility and reduce development costs....</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36324672.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 15, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://images.cryptocompare.com/news/default/cointelegraph.png" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">Bitcoin to hit ‘repeated all-time highs’ over next 2 quarters: VanEck</h3>
+                    <p class="text-gray-600 mb-4">Matthew Sigel, VanEck’s head of digital assets research, says Bitcoin is in “blue sky territory” and expects the cryptocurrency to run up to $180,000 ...</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36323409.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 15, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+                <img src="https://images.cryptocompare.com/news/default/cointelegraph.png" alt="Article Image" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">Bitcoin blips down as Fed’s Powell says no ‘hurry to lower rates’</h3>
+                    <p class="text-gray-600 mb-4">Bitcoin’s price tumbled after United States Federal Reserve Chair Jerome Powell cast doubt on an interest rate cut in December....</p>
+                    <div class="flex justify-between items-center">
+                        <a href="news_pages/36321806.html" class="text-blue-600 hover:text-blue-800 font-semibold">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <span class="text-gray-500 text-sm"><i class="far fa-clock mr-2"></i>November 15, 2024</span>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Newsletter Section -->
+    <div class="bg-gray-100 py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="bg-white rounded-lg shadow-lg p-8 flex flex-col items-center">
+                <h2 class="text-2xl font-bold mb-4">Subscribe to Our Newsletter</h2>
+                <p class="text-gray-600 mb-6">Get the latest crypto news delivered straight to your inbox</p>
+                <form class="w-full max-w-md flex gap-4">
+                    <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button type="submit" class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="max-w-7xl mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">About Us</h3>
+                    <p class="text-gray-400">Your trusted source for cryptocurrency news and analysis.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Home</a></li>
+                        <li><a href="#" class="hover:text-white">Markets</a></li>
+                        <li><a href="#" class="hover:text-white">Analysis</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
