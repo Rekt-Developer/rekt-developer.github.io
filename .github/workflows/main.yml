@@ -1,0 +1,35 @@
+site:
+  title: "RektDeveloper - Your Insights, My Winning!"
+  description: "Market 📈, Patterns 🔥, APIs 💡, TypeScript 🤝 - Turning rekt into @RektDeveloper, one line at a time."
+  author: "RektDeveloper"
+  url: "https://rekt-developer.github.io"
+  twitter: "@RektDeveloper"
+  facebook: "https://www.facebook.com/RektDeveloper"
+  instagram: "https://www.instagram.com/RektDeveloper"
+
+  # Open Graph (OG) settings
+  og_image:
+    url: "https://rekt-developer.github.io/images/og-banner.jpg"
+    width: 1200
+    height: 630
+    alt: "RektDeveloper OG Image"
+
+  # Banner image for website header
+  banner_image:
+    url: "https://rekt-developer.github.io/images/banner.jpg"
+    width: 1920
+    height: 500
+    alt: "RektDeveloper Banner Image"
+  
+  # Favicon
+  favicon:
+    url: "https://rekt-developer.github.io/favicon.ico"
+    type: "image/x-icon"
+
+  # Social Media Links
+  social_links:
+    twitter: "https://twitter.com/RektDeveloper"
+    linkedin: "https://www.linkedin.com/in/rektdeveloper"
+    github: "https://github.com/RektDeveloper"
+    telegram: "https://t.me/RektDevelopers"
+    youtube: "https://www.youtube.com/channel/RektDeveloper"
