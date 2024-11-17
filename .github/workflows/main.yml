@@ -1,52 +1,34 @@
-# .github/workflows/site-automation.yml
-name: Site Automation and Blog Generation
+name: Fetch Latest Crypto News
 
 on:
-  push:
-    branches: [ main ]
   schedule:
-    - cron: '0 0 * * *'  # Daily at midnight
+    - cron: '0 * * * *'  # Runs every hour
+  workflow_dispatch:
 
 jobs:
-  build-and-deploy:
+  fetch-news:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
 
-      - name: Cache dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+    - name: Install dependencies
+      run: |
+        pip install requests jinja2
 
-      - name: Install dependencies
-        run: |
-          npm install marked
-          npm install gray-matter
-          npm install reading-time
-          npm install feed
-          npm install sharp
+    - name: Fetch Latest Crypto News
+      run: |
+        python fetch_news.py
 
-      - name: Process blogs
-        run: node scripts/process-blogs.js
-
-      - name: Generate sitemap
-        run: node scripts/generate-sitemap.js
-
-      - name: Optimize images
-        run: node scripts/optimize-images.js
-
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+    - name: Commit and Push New HTML Files
+      run: |
+        git config --global user.email "your-email@example.com"
+        git config --global user.name "GitHub Actions"
+        git add .
+        git commit -m "Update news HTML pages"
+        git push
