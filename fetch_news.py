@@ -36,38 +36,73 @@ html_template = """
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{{ description }}">
     <meta name="keywords" content="{{ keywords }}">
-    <meta name="author" content="Crypto News">
+    <meta name="author" content="{{ author }}">
     <meta property="og:title" content="{{ title }}">
     <meta property="og:description" content="{{ description }}">
     <meta property="og:image" content="{{ image_url }}">
     <meta property="og:url" content="{{ url }}">
     <title>{{ title }}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background-color: #2563eb;
+            padding: 20px;
+            color: white;
+            text-align: center;
+        }
+
+        .article-content {
+            padding: 20px;
+        }
+
+        .article-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .article-content p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .article-content h1 {
+            font-size: 2rem;
+            margin-top: 20px;
+        }
+
+        .ad-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+    </style>
 </head>
 <body>
     <header>
         <h1>{{ title }}</h1>
-        <p>Published on: {{ published_on }}</p>
+        <p>By {{ author }} | Published on {{ published_on }}</p>
     </header>
-    <section>
-        <img src="{{ image_url }}" alt="{{ title }}">
-        <p>{{ body }}</p>
-        <a href="{{ url }}" target="_blank">Read more...</a>
-    </section>
 
-    <!-- Ad Scripts -->
-    <script async="async" data-cfasync="false" src="//pl25032274.profitablecpmrate.com/12caf3e1b967c725bc896a6a73caf0b6/invoke.js"></script>
-    <div id="container-12caf3e1b967c725bc896a6a73caf0b6"></div> 
-    <script type='text/javascript' src='//pl25032294.profitablecpmrate.com/0f/9f/9c/0f9f9c5c85bb14b4da3ce62b002175ec.js'></script> 
-    <script type="text/javascript">
-        atOptions = {
-            'key' : 'f6669a79207268aad812db292d6b5470',
-            'format' : 'iframe',
-            'height' : 90,
-            'width' : 728,
-            'params' : {}
-        };
-    </script>
-    <script type="text/javascript" src="//www.highperformanceformat.com/f6669a79207268aad812db292d6b5470/invoke.js"></script>
+    <div class="article-content">
+        <img src="{{ image_url }}" alt="Article Image">
+        <h1>{{ title }}</h1>
+        <p>{{ body }}</p>
+    </div>
+
+    <div class="ad-container">
+        <!-- Advertisement Script -->
+        <script async="async" data-cfasync="false" src="//pl25032274.profitablecpmrate.com/12caf3e1b967c725bc896a6a73caf0b6/invoke.js"></script>
+        <div id="container-12caf3e1b967c725bc896a6a73caf0b6"></div>
+        <script type='text/javascript' src='//pl25032294.profitablecpmrate.com/0f/9f/9c/0f9f9c5c85bb14b4da3ce62b002175ec.js'></script>
+    </div>
 </body>
 </html>
 """
@@ -80,7 +115,8 @@ for article in articles:
     published_on = article['published_on']
     image_url = article.get('imageurl', '')
     description = body[:150]  # Short description for meta description
-    keywords = ', '.join(article['tags'].split('|'))  # Tags for meta keywords
+    keywords = ', '.join(article.get('tags', '').split('|'))  # Tags for meta keywords
+    author = article.get('author', 'Crypto News')  # Add author if available, else default to 'Crypto News'
 
     # Render HTML content using Jinja2 template
     template = Template(html_template)
@@ -91,10 +127,14 @@ for article in articles:
         published_on=published_on,
         image_url=image_url,
         description=description,
-        keywords=keywords
+        keywords=keywords,
+        author=author
     )
 
-    # Save the HTML content to a file
-    file_name = f"{output_dir}/{article['id']}.html"
-    with open(file_name, 'w') as file:
+    # Write the generated HTML to a file
+    article_id = article['id']
+    article_file = os.path.join(output_dir, f"{article_id}.html")
+    with open(article_file, 'w', encoding='utf-8') as file:
         file.write(html_content)
+
+    print(f"Generated: {article_file}")
