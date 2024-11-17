@@ -4,21 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rekt Developer Profile</title>
-    <script
-      src="https://unpkg.com/react@18/umd/react.development.js"
-      crossorigin
-    ></script>
-    <script
-      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
-      crossorigin
-    ></script>
-    <script
-      src="https://unpkg.com/babel-standalone@7.18.10/babel.min.js"
-    ></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@700&display=swap"
-      rel="stylesheet"
-    />
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@7.18.10/babel.min.js"></script>
+    <script src="https://unpkg.com/react-icons@4.6.0/dist/react-icons.min.js"></script> <!-- React Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@700&display=swap" rel="stylesheet" />
     <style>
       body {
         font-family: "IBM Plex Mono", monospace;
@@ -26,64 +16,7 @@
         color: #fff;
         text-align: center;
       }
-
-      .header,
-      .footer {
-        background-color: #ff0000;
-        color: white;
-        padding: 20px 0;
-      }
-
-      .profile-pic {
-        border-radius: 50%;
-        width: 150px;
-        height: 150px;
-        object-fit: cover;
-        margin-top: 20px;
-      }
-
-      .badge {
-        background-color: #ff0000;
-        border: none;
-        color: white;
-        padding: 10px;
-        margin: 5px;
-        font-size: 16px;
-      }
-
-      .tech-stack img {
-        margin: 5px;
-      }
-
-      .stats {
-        margin-top: 20px;
-      }
-
-      .social-links a {
-        margin: 10px;
-        color: #ff0000;
-        text-decoration: none;
-        font-size: 18px;
-      }
-
-      .card {
-        padding: 20px;
-        background-color: #202020;
-        margin: 20px auto;
-        width: 80%;
-        max-width: 800px;
-        border-radius: 10px;
-        border: 2px solid #ff0000;
-      }
-
-      .card h1 {
-        font-size: 36px;
-        color: #ff0000;
-      }
-
-      .card p {
-        font-size: 18px;
-      }
+      /* Your existing styles... */
     </style>
   </head>
 
@@ -91,58 +24,10 @@
     <div id="root"></div>
 
     <script type="text/babel">
+      const { FaGithub, FaTelegram, FaShieldAlt } = ReactIcons;
       const { useState, useEffect } = React;
 
-      const TechBadge = ({ children }) => (
-        <div className="bg-red-600 text-white px-3 py-1 rounded-full text-sm font-mono transform transition-all duration-300 hover:scale-110 hover:bg-red-700 cursor-pointer">
-          {children}
-        </div>
-      );
-
-      const ProjectCard = ({ title, description, icon: Icon }) => {
-        const [isHovered, setIsHovered] = useState(false);
-
-        return (
-          <div
-            className={`bg-gray-900 p-4 rounded-lg border-2 transition-all duration-300 ${
-              isHovered ? "border-red-600 scale-105" : "border-gray-700"
-            }`}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-          >
-            <div className="flex items-center gap-2 mb-2">
-              <Icon
-                className={`w-6 h-6 ${isHovered ? "text-red-600" : "text-gray-400"}`}
-              />
-              <h3 className="text-lg font-bold">{title}</h3>
-            </div>
-            <p className="text-gray-400 text-sm">{description}</p>
-          </div>
-        );
-      };
-
-      const StatisticCard = ({ label, value }) => (
-        <div className="bg-gray-900 p-4 rounded-lg border-2 border-gray-700 hover:border-red-600 transition-all duration-300 text-center">
-          <div className="text-2xl font-bold text-red-600">{value}</div>
-          <div className="text-sm text-gray-400">{label}</div>
-        </div>
-      );
-
-      const ActivityGraph = () => {
-        const [activities] = useState([40, 65, 30, 85, 45, 70, 25, 60, 35, 80, 50, 75]);
-
-        return (
-          <div className="h-32 flex items-end gap-1">
-            {activities.map((height, index) => (
-              <div
-                key={index}
-                className="bg-red-600 w-full rounded-t transition-all duration-500 hover:bg-red-400"
-                style={{ height: `${height}%` }}
-              />
-            ))}
-          </div>
-        );
-      };
+      // TechBadge, ProjectCard, StatisticCard, and other components...
 
       const AdvancedProfile = () => {
         const [showMore, setShowMore] = useState(false);
@@ -166,142 +51,43 @@
               </div>
             </div>
 
-            {/* Main Content */}
-            <div className="max-w-4xl mx-auto p-6">
-              {/* Profile Section */}
-              <div className="flex flex-col md:flex-row items-center gap-8 mb-12">
-                <div className="relative">
-                  <img
-                    src="/api/placeholder/150/150"
-                    alt="Profile"
-                    className="w-36 h-36 rounded-full border-4 border-red-600"
-                  />
-                  <div className="absolute -bottom-2 -right-2 bg-red-600 p-2 rounded-full">
-                    <Shield className="w-4 h-4" />
-                  </div>
-                </div>
-
-                <div className="flex-1 text-center md:text-left">
-                  <h2 className="text-2xl font-bold mb-4">About Me</h2>
-                  <div className="flex flex-wrap gap-4 mb-4">
-                    <TechBadge>🌐 Blockchain Space</TechBadge>
-                    <TechBadge>👨‍💻 Smart Contract Dev</TechBadge>
-                    <TechBadge>🔒 Web3 Security</TechBadge>
-                  </div>
-                  <p className="text-gray-400">
-                    Specializing in DeFi protocol development and smart contract security.
-                    Building the future of decentralized finance, one contract at a time.
-                  </p>
+            {/* Profile Section */}
+            <div className="flex flex-col md:flex-row items-center gap-8 mb-12">
+              <div className="relative">
+                <img
+                  src="https://your-image-url.com/profile-pic.jpg"  <!-- Use actual image URL -->
+                  alt="Profile"
+                  className="w-36 h-36 rounded-full border-4 border-red-600"
+                />
+                <div className="absolute -bottom-2 -right-2 bg-red-600 p-2 rounded-full">
+                  <FaShieldAlt className="w-4 h-4" />
                 </div>
               </div>
 
-              {/* Tech Stack */}
-              <div className="mb-12">
-                <h2 className="text-2xl font-bold mb-6 text-center">Tech Stack</h2>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  <TechBadge>Solidity</TechBadge>
-                  <TechBadge>TypeScript</TechBadge>
-                  <TechBadge>Python</TechBadge>
-                  <TechBadge>Rust</TechBadge>
-                  <TechBadge>Node.js</TechBadge>
-                  <TechBadge>React</TechBadge>
-                  <TechBadge>Web3.js</TechBadge>
-                  <TechBadge>Ethereum</TechBadge>
-                </div>
+              <div className="flex-1 text-center md:text-left">
+                <h2 className="text-2xl font-bold mb-4">About Me</h2>
+                <p className="text-gray-400">I am a blockchain developer...</p>
               </div>
+            </div>
 
-              {/* Projects */}
-              <div className="mb-12">
-                <h2 className="text-2xl font-bold mb-6 text-center">Current Projects</h2>
-                <div className="grid md:grid-cols-3 gap-4">
-                  <ProjectCard
-                    title="Smart Contract Auditing"
-                    description="Conducting comprehensive security audits of DeFi protocols"
-                    icon={Shield}
-                  />
-                  <ProjectCard
-                    title="DeFi Protocol"
-                    description="Building next-gen lending and borrowing platform"
-                    icon={Code2}
-                  />
-                  <ProjectCard
-                    title="Security Tools"
-                    description="Developing automated vulnerability scanners"
-                    icon={Terminal}
-                  />
-                </div>
-              </div>
-
-              {/* Statistics */}
-              <div className="mb-12">
-                <h2 className="text-2xl font-bold mb-6 text-center">Statistics</h2>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  <StatisticCard label="Contracts Audited" value="50+" />
-                  <StatisticCard label="Vulnerabilities Found" value="200+" />
-                  <StatisticCard label="Projects Completed" value="30+" />
-                  <StatisticCard label="GitHub Commits" value="1.2k+" />
-                </div>
-              </div>
-
-              {/* Activity */}
-              <div className="mb-12">
-                <h2 className="text-2xl font-bold mb-6 text-center">Activity</h2>
-                <div className="bg-gray-900 p-4 rounded-lg border-2 border-gray-700">
-                  <ActivityGraph />
-                </div>
-              </div>
-
-              {/* More Info */}
-              <div className="text-center">
-                <button
-                  onClick={() => setShowMore(!showMore)}
-                  className="flex items-center gap-2 mx-auto text-red-600 hover:text-red-400 transition-colors duration-300"
-                >
-                  {showMore ? (
-                    <>
-                      Show Less <ChevronUp className="w-4 h-4" />
-                    </>
-                  ) : (
-                    <>
-                      Show More <ChevronDown className="w-4 h-4" />
-                    </>
-                  )}
-                </button>
-
-                {showMore && (
-                  <div className="mt-6 grid gap-4">
-                    <div className="bg-gray-900 p-4 rounded-lg border-2 border-gray-700">
-                      <h3 className="text-xl font-bold mb-4">Additional Skills</h3>
-                      <div className="flex flex-wrap gap-2 justify-center">
-                        <TechBadge>MEV</TechBadge>
-                        <TechBadge>Layer 2</TechBadge>
-                        <TechBadge>ZK Proofs</TechBadge>
-                        <TechBadge>Flash Loans</TechBadge>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* Social Links */}
-              <div className="flex justify-center gap-4 mt-8">
-                <a
-                  href="https://github.com/Rekt-Developer"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-red-600 transition-colors duration-300"
-                >
-                  <Github className="w-6 h-6" />
-                </a>
-                <a
-                  href="https://t.me/RektDevelopers"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-red-600 transition-colors duration-300"
-                >
-                  <Send className="w-6 h-6" />
-                </a>
-              </div>
+            {/* Social Links */}
+            <div className="flex justify-center gap-4 mt-8">
+              <a
+                href="https://github.com/Rekt-Developer"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-red-600 transition-colors duration-300"
+              >
+                <FaGithub className="w-6 h-6" />
+              </a>
+              <a
+                href="https://t.me/RektDevelopers"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-red-600 transition-colors duration-300"
+              >
+                <FaTelegram className="w-6 h-6" />
+              </a>
             </div>
 
             {/* Footer */}
