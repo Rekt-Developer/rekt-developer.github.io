@@ -1,35 +1,52 @@
-site:
-  title: "RektDeveloper - Your Insights, My Winning!"
-  description: "Market 📈, Patterns 🔥, APIs 💡, TypeScript 🤝 - Turning rekt into @RektDeveloper, one line at a time."
-  author: "RektDeveloper"
-  url: "https://rekt-developer.github.io"
-  twitter: "@RektDeveloper"
-  facebook: "https://www.facebook.com/RektDeveloper"
-  instagram: "https://www.instagram.com/RektDeveloper"
+# .github/workflows/site-automation.yml
+name: Site Automation and Blog Generation
 
-  # Open Graph (OG) settings
-  og_image:
-    url: "https://rekt-developer.github.io/images/og-banner.jpg"
-    width: 1200
-    height: 630
-    alt: "RektDeveloper OG Image"
+on:
+  push:
+    branches: [ main ]
+  schedule:
+    - cron: '0 0 * * *'  # Daily at midnight
 
-  # Banner image for website header
-  banner_image:
-    url: "https://rekt-developer.github.io/images/banner.jpg"
-    width: 1920
-    height: 500
-    alt: "RektDeveloper Banner Image"
-  
-  # Favicon
-  favicon:
-    url: "https://rekt-developer.github.io/favicon.ico"
-    type: "image/x-icon"
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-  # Social Media Links
-  social_links:
-    twitter: "https://twitter.com/RektDeveloper"
-    linkedin: "https://www.linkedin.com/in/rektdeveloper"
-    github: "https://github.com/RektDeveloper"
-    telegram: "https://t.me/RektDevelopers"
-    youtube: "https://www.youtube.com/channel/RektDeveloper"
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        run: |
+          npm install marked
+          npm install gray-matter
+          npm install reading-time
+          npm install feed
+          npm install sharp
+
+      - name: Process blogs
+        run: node scripts/process-blogs.js
+
+      - name: Generate sitemap
+        run: node scripts/generate-sitemap.js
+
+      - name: Optimize images
+        run: node scripts/optimize-images.js
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
